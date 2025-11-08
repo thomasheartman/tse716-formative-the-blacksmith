@@ -1,0 +1,64 @@
+[
+  {
+    "label": "Compile LaTeX",
+    "command": "cd \"$(dirname \"$(find . -name main.tex -type f | head -n 1)\")\" && latexmk -shell-escape -pdf main.tex",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus",
+    "reveal_target": "dock",
+    "hide": "on_success"
+  },
+  {
+    "label": "Clean and compile",
+    "command": "cd \"$(dirname \"$(find . -name main.tex -type f | head -n 1)\")\" && latexmk -C && latexmk -shell-escape -pdf -f main.tex",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus",
+    "reveal_target": "dock",
+    "hide": "on_success"
+  },
+  {
+    "label": "Count words",
+    "command": "texcount -inc -sum -1 $(find . -name main.tex -type f | head -n 1)",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus",
+    "reveal_target": "dock"
+  },
+  {
+    "label": "Watch",
+    "command": "cd \"$(dirname \"$(find . -name main.tex -type f | head -n 1)\")\" && latexmk -shell-escape -pdf -pvc -interaction=nonstopmode -synctex=1 main.tex",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus",
+    "reveal_target": "dock",
+    "hide": "on_success"
+  },
+  {
+    "label": "Compile and open",
+    "command": "cd \"$(dirname \"$(find . -name main.tex -type f | head -n 1)\")\" && latexmk -shell-escape -pdf -f main.tex; open main.pdf",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus",
+    "reveal_target": "dock",
+    "hide": "on_success"
+  },
+  {
+    "label": "Open PDF",
+    "command": "open \"$(find . -name main.tex -type f | head -n 1 | sed 's/\\.tex$/.pdf/')\"",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus",
+    "reveal_target": "dock",
+    "hide": "always"
+  },
+  {
+    "label": "Clean build files",
+    "command": "cd \"$(dirname \"$(find . -name main.tex -type f | head -n 1)\")\" && latexmk -C",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus",
+    "reveal_target": "dock",
+    "hide": "on_success"
+  }
+]
