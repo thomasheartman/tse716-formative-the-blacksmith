@@ -11,9 +11,8 @@
       "settings": {
         "texlab": {
           "build": {
-            "onSave": false,
+            "onSave": true,
             "forwardSearchAfter": false
-            // "args": ["-shell-escape"]
           }
         }
       }

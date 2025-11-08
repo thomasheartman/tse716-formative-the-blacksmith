@@ -359,3 +359,9 @@ wordcount.tex
 *.xsc
 .bitwig-project
 *.bwproject
+
+## Include the zed directory
+!.zed
+
+## Ignore the .jj folder
+.jj

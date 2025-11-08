@@ -15,7 +15,7 @@
 % ignore footnotes
 %TC:macro \footnote 1
 
-% This should in theory write
+% This writes the word count to the word count file, so that the content of that file can be included (on the cover page).
 \immediate\write18{texcount -inc -sum -1 main.tex > wordcount.tex}
 
 % This is where the main document starts, if you need to put anything else in the preamble,
