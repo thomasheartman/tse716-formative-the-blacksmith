@@ -1,0 +1,188 @@
+% This file defines the settings of the template.
+% You shouldn't need to change things unless you have a specific reason
+% You can customize the colors below by using standard RGB codes eg 255,255,255 for black
+% in the COLORS section below.
+
+% This template is implemented as a LaTeX package called tsetemplate
+% defined by this file.
+\ProvidesPackage{tsetemplate}
+
+%%% LOAD PACKAGES %%%%
+% These packages are needed for the template to function correctly, you can add more with the \usepackage command
+% Currently it's set to A4 paper size, and uses Helvetica font. It also understands German :)
+
+\usepackage[document]{ragged2e}
+\usepackage[a4paper, top=3.3cm, bottom=2cm, left=2.27cm, right=2.27cm, headheight=2cm, footskip=16pt]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{tabularx, tabularray, array, xcolor, titlesec, makecell}
+\usepackage{graphicx, fancyhdr, setspace, float}
+\usepackage{wrapfig}
+\usepackage{booktabs, multirow, cellspace}
+\usepackage[english]{babel}
+\usepackage[none]{hyphenat}
+\usepackage{musicography}
+%\usepackage[skip=10pt plus1pt, indent=30pt]{parskip}
+
+% You can change the font below. This currently uses Helvetica
+\usepackage{helvet}
+
+\usepackage{caption}
+\usepackage[notes, backend=biber, giveninits=true, uniquename=init, isbn=false, booklongxref=false, annotation, compresspages, cmsbreakurl, autolang=other, dashed=false]{biblatex-chicago}
+\input{definitions/custom-biblatex.tex}
+\usepackage{csquotes}
+
+\usepackage{ifthen, ifthenx}
+\usepackage{hyperref} % support links in document
+\hypersetup{
+    colorlinks=true,
+    allcolors=blue,
+    pdftitle={\ModuleName},
+    hypertexnames=false
+    }
+\urlstyle{same}
+
+
+
+% You don't need this it makes dummy lorem text for testing purposes.
+\usepackage{lipsum}
+
+
+%%%% CUSTOM DEFINITIONS %%%%
+% These Settings define things we need for formatting according to TSE style
+% TSE requires doublespaced document text. You can override this manually in the text,
+% e.g. \singlespacing or change here if you want it to be default
+% default value of \parindent parameter is `0pt` but TSE requires ragged right with para indents
+% after the first paragraph % so this puts the indent on second para back,
+% this can have unintended consequences to Table and figure captions, so use the example in testlayoutmvf.tex
+
+\urlstyle{same}
+\def\PSubtitle{\Large\itshape{}}
+\doublespacing
+\setlength\RaggedRightParindent{\parindent}
+\RaggedRight %uses hypheanated ragged right text
+
+\usepackage{etoolbox}
+\AtBeginEnvironment{figure}{\setlength{\RaggedRightParindent}{0em}}
+\AtBeginEnvironment{table}{\setlength{\RaggedRightParindent}{0em}}
+\AtBeginEnvironment{minipage}{\setlength{\RaggedRightParindent}{0em}}
+
+
+%this will set everything to helvetica font comment out with %
+% If you want to use a serif style font (e.g. if you're printing this)
+
+\renewcommand{\familydefault}{\sfdefault}
+
+% defines the file from which the Bibliography will load
+% if you want to change that while keeping the example, do it here
+% future self may not thank me for not making this a command, but he can fix it in post
+\addbibresource{BibliographyCitations.bib}
+\suppressbibfield{annote}
+
+% Set up the page headers to include Thinkspace Logo.
+% This setup puts the \Headername followed by the page number top right in the page
+% It will suppress the pagenumber at the bottom of the page to match the TSE template
+\pagestyle{fancy}
+\fancyhead[L,C]{}
+\cfoot{}
+\fancyhead[R]{\text{\HeaderName}{ }{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\lhead{\includegraphics[width=4.8cm]{images/thinkspace-logo}}
+
+% Define a special style for title pages
+\fancypagestyle{titlep}{
+  \fancyhf{} % clear the current params
+  \fancyhead[LH]{\includegraphics[width=4.8cm]{images/thinkspace-logo}}
+}
+
+%%%% COLORS %%%%
+% Define some things we want to use like custom colours
+% These affect things like Section Title colors, table header colors and fron title box
+\definecolor{MSyellow}{RGB}{253,185,0}
+\definecolor{MSpblue}{RGB}{66,4,162}
+\definecolor{NiceGray}{RGB}{248,248,248}
+\definecolor{section-label-color}{RGB}{47,84,150}
+\definecolor{caption-label-color}{RGB}{128,128,128}
+\definecolor{caption-text-color}{RGB}{128,128,128}
+
+\newcommand{\titlclr}{\color{section-label-color}}
+
+
+%%%% SECTION AND TITLE FORMAT %%%%%
+
+% \titleformat{<command>}[<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
+% where [<shape>] and [<after-code>] are optional parameters, and:
+
+% <command> is the sectioning command to be redefined: \part, \chapter, \section, \subsection, \subsubsection, \paragraph or \subparagraph.
+% <shape> is sectioning paragraph shape; possible values are: hang, block, display, runin, leftmargin, rightmargin, drop, wrap and frame.
+% <format> is the format to be applied to the title, label, and text; for example \normalfont\Large\bfseries
+% <label> specify sectioning label.
+% <sep> is the horizontal separation between label and title body and it must be a length and not be empty.
+% <before-code> is code preceding the title body.
+% <after-code> is code following the title body.%
+% TSE requires no blank space between heading and first line.
+\titleformat{\section}{\LARGE\bf\titlclr}{\thesection}{1em}{}[\titlerule \vspace{.1ex}]
+\titleformat{\subsection}{\large\bf\titlclr}{\thesection}{1em}{}[\titlerule \vspace{.8ex}]
+\setlength{\skip\footins}{1.2pc plus 5pt minus 2pt}
+
+
+
+%%%% CAPTIONS %%%%%
+% Since RaggedRight and the \parindent function messes with captions
+% we need to force this back to align to the left of the image.
+% you can also change the fonts and justification look if you uncomment some of the stuff below.
+% I suggest you don't because it will start to give you a headache
+
+\DeclareCaptionFont{blah}{\small\sffamily\selectfont}
+\DeclareCaptionFormat{custom}
+{
+    \textbf{\small #1#2}\textit{\small #3}
+}
+\captionsetup[figure]{
+  position=bottom,
+  skip=3mm,
+  %font={small,it,onehalfspacing,color=red},
+  %labelfont={bf,sf,color=caption-label-color},
+  %textfont={blah,color=caption-text-color},
+  singlelinecheck=false,
+  format={custom},
+  %justification=justified,
+  %labelformat=parens,
+  width={0.8\textwidth},
+  %labelsep=enskip
+}
+% If you use a more flexible table such as tabularray, it will ignore all attempts at customization
+% from the caption package, therefore we define a matching style here.
+
+\NewTblrTheme{fancy} {
+  \DefTblrTemplate{caption-tag}{default}{\small \bfseries Table\hspace{0.25em}\thetable}
+  \DefTblrTemplate{caption-sep}{default}{\small \bfseries :\enskip}
+  \DefTblrTemplate{caption-text}{default}{\small \itshape\InsertTblrText{caption}}
+  \SetTblrStyle{caption-tag}{caption-label-color}
+  \SetTblrStyle{caption-sep}{caption-label-color}
+  \SetTblrStyle{caption-text}{caption-text-color}
+}
+
+
+%%%% CITATION CUSTOMISATION %%%%
+% Avoid bibtlatex-chicago using ibid to meet TSE requirements
+
+\renewbibmacro*{cite:short:ibid}{\usebibmacro{cite:short}{\thefield{entrytype}}}
+
+% Change the order of the date fields to match TSE style
+
+\DefineBibliographyExtras{english}{%
+    \protected\def\mkbibdatelong#1#2#3{%
+    \iffieldundef{#3}
+      {}
+      {\stripzeros{\thefield{#3}}%\adddot%
+       \iffieldundef{#2}{}{\nobreakspace}}%
+    \iffieldundef{#2}
+      {}
+      {\mkbibmonth{\thefield{#2}}%
+       \iffieldundef{#1}{}{\space}}%
+    \stripzeros{\thefield{#1}}}%
+}
+
+\SetBlockThreshold{2}

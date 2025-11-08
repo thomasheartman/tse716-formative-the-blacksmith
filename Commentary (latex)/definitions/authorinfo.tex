@@ -1,0 +1,39 @@
+% !TEX root = ../main.tex
+% (this is to make TexShop know where your parent file is)
+
+% Use this file to set your data, it will automatically update the informationin your pdf
+\ProvidesPackage{authorinfo}
+% Define a few values for things so we don't have to do it multiple times
+\def\PaperTitle{TSE701 Writing in Styles} % The Title of this Assignment
+\def\MySubtitle{Contemporary Crime} % Use this if you want a subtitle just leave blank {} if not needed
+\def\MyFullName{Thomas Heartman} % This should be obvious - it will appear under Title/Subtitle
+\def\StudNum{39870} % Your student number%
+\def\CourseTitle{MFA Video Game and Media Composition} % Your Course
+\def\ModuleName{Writing in Styles} % Change this to the current module name
+\def\SectionType{Summative} % The Formative or summative e.g. Formative 1
+\def\AssignCode{701} % The module code - it will add TSE to the beginning e.g. TSE67
+\def\HeaderName{T. Heartman} % This will be used in the header of the pages
+\def\Wordcount{\input{wordcount.tex}} % You're on your own with this. LaTeX doesn't know how to do it yet. Fill it manually.
+\def\customdate{\today} % Today's date will appear in the title page (it will change daily), or comment this line with % and uncomment the one below to use a custom date
+% \def\customdate{30 July, 2023} %you can set this to whatever date you want on the title page - if you want today's date to aappear (it will change daily) then put \today
+
+% You can turn off sections by changing the following to % in front, otherwise you will see section headings for
+% all of the standard sections defined in the TSE template, you can also change the text in brackets
+% and it will change the section name to that Eg \def\ResearchSection{Foo} will call the Research section Foo, and these will be automatically used.
+% \def\Introduction{Introduction}
+\def\ResearchSection{Research}
+\def\CreativeApproach{Creative}
+\def\TechApproach{Technical}
+\def\PracticalApproach{Practical}
+% \def\ProjectContext{Project Context}
+% \def\FurtherComments{Further Comments}
+\def\Endmatter{End Matter} % I use this for the declarations of authorship etc.
+\def\MyAppendixA{Appendix A: Equipment}
+% Uncomment the below to define more section names, e.g appendices, and then
+% create them (copy / paste and modify in main.tex
+\def\MyAppendixB{Appendix B: Tutor Feedback}
+\def\MyAppendixC{Appendix C: Formative commentary snippet }
+%\def\MyAppendixD{Appendix D }
+
+% Some commonly used words and phrases that might be hard to type
+\def\DALLE{DALL·E }

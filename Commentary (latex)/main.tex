@@ -1,0 +1,217 @@
+%TC:incbib
+\documentclass[11pt]{article} % This template uses article format. Change at your own risk
+\usepackage{import}
+\usepackage{authorinfo}
+\usepackage{todonotes}
+\usepackage{pdfpages}
+\usepackage{tsetemplate} % This template is loaded as a package from tsetemplate.sty
+% All of the Title Page and author info is defined in the referenced authorinfo file,
+% if you want to change it, you should do it there, it can be found in the /definitions directory
+%TC:fileinclude \import dir,file
+%\import{definitions/}{authorinfo}
+
+% Don't count words in citation macros. Citations themselves are not counted
+%TC:macro \autocite 1
+% ignore footnotes
+%TC:macro \footnote 1
+
+% This should in theory write
+\immediate\write18{texcount -inc -sum -1 main.tex > wordcount.tex}
+
+% This is where the main document starts, if you need to put anything else in the preamble,
+% then do it in tsetemplate.sty
+\begin{document}
+
+% We use a custom title page that fills the full first page and has no number but includes TSE logo.
+% You must fill in the data in definitions/authorinfo.tex to fill these parameters
+\import{definitions/}{mytitlepage}
+
+% Start main document area, this will use the files from /section files  you can use include pages, you can ignore sections by adding
+% NoSection to the relevant file, or just comment it out here
+
+\singlespacing % why this is needed I don't know.
+\renewcommand\contentsname{Table of Contents}
+\tableofcontents{}
+\doublespacing
+\newpage
+
+% \begin{centering}
+% \noindent
+% \color{section-label-color}
+% \textbf{\huge Commentary}
+% %\vspace{\baselineskip}
+% \end{centering}
+
+% Based on whether you have defined them in authorinfo.tex, your section files will be included or excluded here.
+% To make this main document clearer, include things like tables or figures that have complex formatting into separate files in
+% Subdirectory - here sectionfiles (don't add the filename extension eg .tex as a general good practice as it only works
+% with import or input, not with include). - you can then include them with \import{/sectionfiles}{nameoffile}
+% You can write directly into here, though it may be better to use the defined subfiles - you can use more and import or include them
+% here - if you use include, put them in the same directory as this file, it's just like typing here.
+% Use import if you have them in a subdirectory.
+% In a big project you could include each chapter and its images and figures in it's own directory and then import them all
+% you can use subimport to include the other parts into the subfile
+% As with the TSE template, each section is a main unnumbered heading
+% if you want numbered sections take out the * from \section  and comment the \addcontentsline
+% or you will have duplicate entries in your Table of Contents
+
+\ifdefined\Introduction
+  \phantomsection
+  \section*{\Introduction}
+  \addcontentsline{toc}{section}{\Introduction}
+  \label{intro}
+  \import{sectionfiles/}{introduction}
+\fi
+
+\ifdefined\ResearchSection
+  \phantomsection
+  \section*{\ResearchSection}
+  \addcontentsline{toc}{section}{\ResearchSection}
+  \label{research}
+  \import{sectionfiles/}{researchsection}
+\fi
+
+
+\ifdefined\CreativeApproach
+  \phantomsection
+  \section*{\CreativeApproach}
+  \addcontentsline{toc}{section}{\CreativeApproach}
+  \label{creative}
+  \import{sectionfiles/}{creativesection}
+\fi
+
+\ifdefined\TechApproach
+  \phantomsection
+  \section*{\TechApproach}
+  \addcontentsline{toc}{section}{\TechApproach}
+  \label{tech}
+  \import{sectionfiles/}{techsection}
+\fi
+
+\ifdefined\PracticalApproach
+  \phantomsection
+  \section*{\PracticalApproach}
+  \addcontentsline{toc}{section}{\PracticalApproach}
+  \label{practical}
+  \import{sectionfiles/}{practicalsection}
+\fi
+
+\ifdefined\ProjectContext
+  \phantomsection
+  \section*{\ProjectContext}
+  \addcontentsline{toc}{section}{\ProjectContext}
+  \label{context}
+  \import{sectionfiles/}{projectcontextsection}
+\fi
+
+\ifdefined\FurtherComments
+  \phantomsection
+  \section*{\FurtherComments}
+  \addcontentsline{toc}{section}{\FurtherComments}
+  \label{further}
+  \import{sectionfiles/}{furthercommentsection}
+\fi
+
+\clearpage
+
+%TC:ignore
+% The Bibliography will be added at this point.
+
+\phantomsection
+\printbibliography[title={Bibliography}, heading=bibintoc] %
+\label{references}
+% If you only want sources you've cited in the text, then comment out the below \nocite
+% otherwise, it will cite any and all sources in your citation file.
+% this might not be very useful if you are using it for multiple projects
+\nocite{*}
+
+
+% \ifdefined\Endmatter
+%   \clearpage % This will put this section at the start of a new page.
+%   \phantomsection
+%   \section*{\Endmatter}
+%   \addcontentsline{toc}{section}{\Endmatter}
+%   \label{endmatter}
+%   \singlespacing
+%   \import{sectionfiles/}{endmattersection}
+% \fi
+
+\ifdefined\MyAppendixA
+  \clearpage % This will put this section at the start of a new page.
+  \phantomsection
+  \section*{\MyAppendixA}
+  \addcontentsline{toc}{section}{\MyAppendixA}
+  \label{appendixA}
+  \singlespacing
+  \import{sectionfiles/}{appendix-a}
+\fi
+
+\clearpage
+
+\ifdefined\MyAppendixB
+  \clearpage % This will put this section at the start of a new page.
+  \phantomsection
+  \section*{\MyAppendixB}
+  \addcontentsline{toc}{section}{\MyAppendixB}
+  \label{appendixB}
+  \doublespacing
+  \import{sectionfiles/}{appendix-b}
+\fi
+
+\clearpage
+
+\ifdefined\MyAppendixC
+  \clearpage % This will put this section at the start of a new page.
+  \phantomsection
+  \section*{\MyAppendixC}
+  \addcontentsline{toc}{section}{\MyAppendixC}
+  \label{appendixC}
+  \singlespacing
+  \import{sectionfiles/}{appendix-c}
+\fi
+\clearpage
+
+\ifdefined\MyAppendixD
+  \clearpage % This will put this section at the start of a new page.
+  \phantomsection
+  \section*{\MyAppendixD}
+  \addcontentsline{toc}{section}{\MyAppendixD}
+  \label{appendixD}
+  \singlespacing
+  \import{sectionfiles/}{appendix-d}
+\fi
+\clearpage
+
+%%%% APPENDICIES %%%%
+%% Copy/Paste and uncomment, and replace N with whatever you've defined in authorinfo.tex
+% Make a filename that matches called appendix-n (again replace n with the correct letter)
+% in the files section
+
+% \ifdefined\MyAppendixN
+%    \clearpage % This will put this section at the start of a new page.
+%   \addcontentsline{toc}{section}{\MyAppendixN}
+%   \section*{\MyAppendixN}
+%   \singlespacing
+%   \import{sectionfiles/}{appendix-n}
+% \fi
+
+%%%% List of Figures and tables.
+%%% IF you want to include a list of figures and / or tables, you can do that below.
+%%% Comment it out as appropriate.
+
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
+\cleardoublepage
+% \phantomsection
+% \addcontentsline{toc}{section}{\listfigurename}
+% \label{listfigures}
+% \listoffigures
+% \phantomsection
+% \addcontentsline{toc}{section}{\listtablename}
+% \label{listtables}
+% \listoftables
+\doublespacing
+
+
+%TC:endignore
+\end{document}

@@ -1,0 +1,127 @@
+\DeclareFieldFormat[audio,music]{title}{%
+  {\mkbibquote{#1\nopunct}}}
+
+  \DeclareBibliographyDriver{audio}{%
+    \usebibmacro{bibindex}%
+    \usebibmacro{begentry}%
+    \usebibmacro{shorthand:author}%
+    \usebibmacro{author/editor}%
+    \newunit\newblock
+    \ifboolexpr{%
+      test {\ifundef{\bbx@lasthash}}%
+      and
+      (
+      not test {\iffieldundef{title}}%
+      or
+      not test {\iffieldundef{titleaddon}}%
+      )
+    }%
+    {\usebibmacro{italtitle+stitle}}{}%
+    \usebibmacro{cmsbibsortdate}%
+    \newunit\newblock
+    \ifboolexpr{%
+      test {\ifundef{\bbx@lasthash}}%
+      or
+      (
+      test {\iffieldundef{title}}%
+      and
+      test {\iffieldundef{titleaddon}}%
+      )
+    }%
+    {}{\usebibmacro{italtitle+stitle}}%
+    \newunit% 16th ed.
+    \usebibmacro{byauthor}%
+    \newunit\newblock
+    \usebibmacro{part+editor+translator}%
+    \newunit\newblock
+    \ifthenelse{\iffieldundef{booktitle}\AND\iffieldundef{entrysubtype}}%
+    {\usebibmacro{byeditor+others}\newunit\newblock}{}%
+    \usebibmacro{date}%
+    \usebibmacro{music+eventdate}%\printeventdate
+    \newunit\newblock
+    \printfield{note}%
+    \newunit\newblock
+    \newunit\newblock
+    % \usebibmacro{chap+as+track}%inscore% 17th ed. % print track X on
+    \usebibmacro{music+bookauthor}% Ditto.
+    \usebibmacro{btitle+bstitle}%
+    \iffieldundef{booktitle}%
+    {\newunit}% Fix customc?
+    {\newcunit}%
+    \iffieldundef{edition}%
+    {}%
+    {\usebibmacro{edition}}%
+    \usebibmacro{editorpunct}%\newunit% unit, not cunit?
+    \ifthenelse{\iffieldundef{booktitle}\AND\iffieldundef{entrysubtype}}%
+    {}{\usebibmacro{byeditor+others}}%
+    \newunit% ??? Editorpunct maybe not right here?
+    \iffieldundef{maintitle}%
+    {}%
+    {\ifthenelse{\iffieldundef{volume}\AND\iffieldundef{part}}%
+      {\ifthenelse{\iffieldundef{title}\AND\iffieldundef{booktitle}}%
+        {\usebibmacro{cms-in:}}%
+        {\bibstring{in}\setunit{\addspace}}%
+        \printtext{%
+          \printfield{maintitle}%
+          \setunit{\subtitlepunct}%
+          \printfield[mainsubtitle]{mainsubtitle}}%
+        \setunit{\ctitleaddonpunct}%
+        \printfield{maintitleaddon}}%
+      {\printfield{volume}%
+        \printfield{part}%
+        \setunit{\addspace}%
+        \bibstring[\cms@ofwrap]{ofseries}%
+        \iftoggle{smartof}{}{\setunit{\addspace}}%
+        \printtext{%
+          \printfield[title:hook:alt]{maintitle}%
+          \setunit{\subtitlepunct}%
+          \printfield[mainsubtitle]{mainsubtitle}}%
+        \setunit{ctitleaddonpunct}%
+        \printfield{maintitleaddon}}}%
+    \newcunit\newblock
+    \usebibmacro{volume+pages}%
+    \newunit\newblock
+    \printfield{version}%
+    \newunit\newblock
+    \usebibmacro{music+origdate}% Changed for 17th ed.
+    \newunit\newblock
+    \printlist{publisher}%
+    \setunit*{\addcomma\addspace}\newblock
+    \usebibmacro{series+or+shortser}%
+    \ifboolexpr{test {\iflistundef{publisher}} and test {\iffieldundef{series}}}%
+    {\newunit}%
+    {\setunit{\addspace}}%
+    \printfield{number}%
+    \newcunit\newblock
+    \newunit
+    \usebibmacro{institution+organization}%
+    \setunit*{\addcomma\addspace}\newblock
+    \printlist{location}%
+    \newcunit\newblock
+    \iffieldundef{medium}%
+      \iffieldundef{type}%
+      {}%
+      {\printfield{type}}%
+    {\printfield{medium}}%
+    % \printfield{type}%
+    \newunit\newblock
+    \usebibmacro{pubstate}% 16th ed -- origdate instead, as above?
+    \newunit\newblock
+    \printfield{addendum}%
+    \setunit*{\addcomma\addspace}\newblock%
+    \iftoggle{cms@isbn}%
+    {\printfield{iswc}}%
+    {}%
+    \setunit{\addcomma\addspace}\newblock%
+    \printfield{howpublished}%
+    \usebibmacro{bib+doi+url}%
+    \newunit\newblock
+    \usebibmacro{pageref}%
+    \newunit\newblock
+    \iftoggle{cms@related}%
+    {\usebibmacro{related:init}%
+      \usebibmacro{related}%
+      \newunit}%
+    {}%
+    \usebibmacro{originally+published+as}%
+    \usebibmacro{finentry}}
