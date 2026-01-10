@@ -4,7 +4,7 @@
   \DeclareBibliographyDriver{audio}{%
     \usebibmacro{bibindex}%
     \usebibmacro{begentry}%
-    \usebibmacro{shorthand:author}%
+    % \usebibmacro{shorthand:author}% % Commented out - not defined in biblatex-chicago
     \usebibmacro{author/editor}%
     \newunit\newblock
     \ifboolexpr{%
@@ -17,7 +17,7 @@
       )
     }%
     {\usebibmacro{italtitle+stitle}}{}%
-    \usebibmacro{cmsbibsortdate}%
+    % \usebibmacro{cmsbibsortdate}%
     \newunit\newblock
     \ifboolexpr{%
       test {\ifundef{\bbx@lasthash}}%
@@ -105,7 +105,7 @@
     {\printfield{medium}}%
     % \printfield{type}%
     \newunit\newblock
-    \usebibmacro{pubstate}% 16th ed -- origdate instead, as above?
+    % \usebibmacro{pubstate}% % Commented out - not defined in biblatex-chicago
     \newunit\newblock
     \printfield{addendum}%
     \setunit*{\addcomma\addspace}\newblock%

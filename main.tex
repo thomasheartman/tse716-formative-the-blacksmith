@@ -57,46 +57,46 @@
 % if you want numbered sections take out the * from \section  and comment the \addcontentsline
 % or you will have duplicate entries in your Table of Contents
 
-\ifdefined\Introduction
-    \phantomsection
-    \section*{\Introduction}
-    \addcontentsline{toc}{section}{\Introduction}
-    \label{intro}
-    \import{sectionfiles/}{introduction}
+% \ifdefined\Introduction
+%     \phantomsection
+%     \section*{\Introduction}
+%     \addcontentsline{toc}{section}{\Introduction}
+%     \label{intro}
+%     \import{sectionfiles/}{introduction}
+% \fi
+
+\ifdefined\ResearchSection
+  \phantomsection
+  \section*{\ResearchSection}
+  \addcontentsline{toc}{section}{\ResearchSection}
+  \label{research}
+  \import{sectionfiles/}{researchsection}
 \fi
 
-% \ifdefined\ResearchSection
-%   \phantomsection
-%   \section*{\ResearchSection}
-%   \addcontentsline{toc}{section}{\ResearchSection}
-%   \label{research}
-%   \import{sectionfiles/}{researchsection}
-% \fi
 
+\ifdefined\CreativeApproach
+  \phantomsection
+  \section*{\CreativeApproach}
+  \addcontentsline{toc}{section}{\CreativeApproach}
+  \label{creative}
+  \import{sectionfiles/}{creativesection}
+\fi
 
-% \ifdefined\CreativeApproach
-%   \phantomsection
-%   \section*{\CreativeApproach}
-%   \addcontentsline{toc}{section}{\CreativeApproach}
-%   \label{creative}
-%   \import{sectionfiles/}{creativesection}
-% \fi
+\ifdefined\TechApproach
+  \phantomsection
+  \section*{\TechApproach}
+  \addcontentsline{toc}{section}{\TechApproach}
+  \label{tech}
+  \import{sectionfiles/}{techsection}
+\fi
 
-% \ifdefined\TechApproach
-%   \phantomsection
-%   \section*{\TechApproach}
-%   \addcontentsline{toc}{section}{\TechApproach}
-%   \label{tech}
-%   \import{sectionfiles/}{techsection}
-% \fi
-
-% \ifdefined\PracticalApproach
-%   \phantomsection
-%   \section*{\PracticalApproach}
-%   \addcontentsline{toc}{section}{\PracticalApproach}
-%   \label{practical}
-%   \import{sectionfiles/}{practicalsection}
-% \fi
+\ifdefined\PracticalApproach
+  \phantomsection
+  \section*{\PracticalApproach}
+  \addcontentsline{toc}{section}{\PracticalApproach}
+  \label{practical}
+  \import{sectionfiles/}{practicalsection}
+\fi
 
 % \ifdefined\ProjectContext
 %   \phantomsection
@@ -106,15 +106,13 @@
 %   \import{sectionfiles/}{projectcontextsection}
 % \fi
 
-% \ifdefined\FurtherComments
-%   \phantomsection
-%   \section*{\FurtherComments}
-%   \addcontentsline{toc}{section}{\FurtherComments}
-%   \label{further}
-%   \import{sectionfiles/}{furthercommentsection}
-% \fi
-
-%TC:endignore
+\ifdefined\FurtherComments
+  \phantomsection
+  \section*{\FurtherComments}
+  \addcontentsline{toc}{section}{\FurtherComments}
+  \label{further}
+  \import{sectionfiles/}{furthercommentsection}
+\fi
 
 \clearpage
 
