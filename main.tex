@@ -58,43 +58,11 @@
 % or you will have duplicate entries in your Table of Contents
 
 \ifdefined\Introduction
-\phantomsection
-\section*{\Introduction}
-\addcontentsline{toc}{section}{\Introduction}
-\label{intro}
-\import{sectionfiles/}{introduction}
-\fi
-
-\ifdefined\CompA
-  \phantomsection
-  \section*{\CompA}
-  \addcontentsline{toc}{section}{\CompA}
-  \label{comp:a}
-  \import{sectionfiles/}{alicia}
-\fi
-
-\ifdefined\CompB
-  \phantomsection
-  \section*{\CompB}
-  \addcontentsline{toc}{section}{\CompB}
-  \label{comp:b}
-  \import{sectionfiles/}{gestrals}
-\fi
-
-\ifdefined\CompC
-  \phantomsection
-  \section*{\CompC}
-  \addcontentsline{toc}{section}{\CompC}
-  \label{comp:c}
-  \import{sectionfiles/}{une-vie}
-\fi
-
-\ifdefined\Conclusion
-\phantomsection
-\section*{\Conclusion}
-\addcontentsline{toc}{section}{\Conclusion}
-\label{conc}
-\import{sectionfiles/}{conclusion}
+    \phantomsection
+    \section*{\Introduction}
+    \addcontentsline{toc}{section}{\Introduction}
+    \label{intro}
+    \import{sectionfiles/}{introduction}
 \fi
 
 % \ifdefined\ResearchSection
@@ -146,8 +114,6 @@
 %   \import{sectionfiles/}{furthercommentsection}
 % \fi
 
-%TC:ignore (don't include the word count statement in the actual word count)
-\textit{\Wordcount words.}
 %TC:endignore
 
 \clearpage
