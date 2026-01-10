@@ -11,18 +11,18 @@
 % These packages are needed for the template to function correctly, you can add more with the \usepackage command
 % Currently it's set to A4 paper size, and uses Helvetica font. It also understands German :)
 
-\usepackage[document]{ragged2e}
 \usepackage[a4paper, top=3.3cm, bottom=2cm, left=2.27cm, right=2.27cm, headheight=2cm, footskip=16pt]{geometry}
 \usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
 \usepackage{amsmath, amssymb}
 \usepackage{tabularx, tabularray, array, xcolor, titlesec, makecell}
 \usepackage{graphicx, fancyhdr, setspace, float}
 \usepackage{wrapfig}
 \usepackage{booktabs, multirow, cellspace}
 \usepackage[english]{babel}
-\usepackage[none]{hyphenat}
+\usepackage{hyphenat} % other options: none, htt
 \usepackage{musicography}
-%\usepackage[skip=10pt plus1pt, indent=30pt]{parskip}
+\usepackage[skip=10pt plus1pt, indent=0pt]{parskip}
 
 % You can change the font below. This currently uses Helvetica
 \usepackage{helvet}
@@ -30,7 +30,8 @@
 \usepackage{caption}
 \usepackage[notes, backend=biber, giveninits=true, uniquename=init, isbn=false, booklongxref=false, annotation, compresspages, cmsbreakurl, autolang=other, dashed=false]{biblatex-chicago}
 \input{definitions/custom-biblatex.tex}
-\usepackage{csquotes}
+\usepackage[autostyle]{csquotes}
+\MakeOuterQuote{"}
 
 \usepackage{ifthen, ifthenx}
 \usepackage{hyperref} % support links in document
@@ -59,13 +60,8 @@
 \urlstyle{same}
 \def\PSubtitle{\Large\itshape{}}
 \doublespacing
-\setlength\RaggedRightParindent{\parindent}
-\RaggedRight %uses hypheanated ragged right text
 
-\usepackage{etoolbox}
-\AtBeginEnvironment{figure}{\setlength{\RaggedRightParindent}{0em}}
-\AtBeginEnvironment{table}{\setlength{\RaggedRightParindent}{0em}}
-\AtBeginEnvironment{minipage}{\setlength{\RaggedRightParindent}{0em}}
+
 
 
 %this will set everything to helvetica font comment out with %
@@ -181,7 +177,7 @@
     \iffieldundef{#2}
       {}
       {\mkbibmonth{\thefield{#2}}%
-       \iffieldundef{#1}{}{\space}}%
+       \iffieldundef{#1}{}{,\space}}%
     \stripzeros{\thefield{#1}}}%
 }
 

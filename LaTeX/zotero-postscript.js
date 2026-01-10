@@ -4,6 +4,10 @@
 // them to Zotero -> Settings -> BetterBibTeX -> Postscript
 
 if (Translator.BetterBibTeX || Translator.BetterBibLaTeX) {
+  if (false) {
+    Zotero.debug("POSTSCRIPT DEBUG: " + JSON.stringify(zotero));
+  }
+
   if (zotero.itemType === "audioRecording") {
     for (const creator of zotero.creators) {
       if (creator.creatorType === "performer") creator.creatorType = "author";
@@ -14,7 +18,7 @@ if (Translator.BetterBibTeX || Translator.BetterBibLaTeX) {
       tex.add({ name: "booktitle", value: tex.has.album.value });
     }
 
-    if (zotero.url.includes("soundcloud") && !tex.has.booktitle) {
+    if (zotero.url?.includes("soundcloud") && !tex.has.booktitle) {
       tex.add({ name: "booktitle", value: "Artist upload", enc: "verbatim" });
     }
 
@@ -30,5 +34,35 @@ if (Translator.BetterBibTeX || Translator.BetterBibLaTeX) {
         tex.add({ name: "howpublished", value: "Spotify" });
       }
     }
+
+    if (zotero.url?.includes("spotify")) {
+      tex.remove("urldate");
+    }
+  }
+
+  if (zotero.date?.includes("T")) {
+    tex.add({
+      name: "date",
+      value: zotero.date.substring(0, zotero.date.indexOf("T")),
+    });
+  }
+
+  if (
+    zotero.itemType === "videoRecording" &&
+    zotero.url &&
+    zotero.url.includes("youtube.com")
+  ) {
+    for (const creator of zotero.creators) {
+      if (creator.creatorType === "director") creator.creatorType = "author";
+    }
+    tex.addCreators();
+  }
+
+  if (!zotero.date) {
+    tex.add({
+      name: "year",
+      value: "\\bibstring{nodate}",
+      enc: "verbatim",
+    });
   }
 }
