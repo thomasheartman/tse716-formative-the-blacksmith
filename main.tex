@@ -57,13 +57,13 @@
 % if you want numbered sections take out the * from \section  and comment the \addcontentsline
 % or you will have duplicate entries in your Table of Contents
 
-% \ifdefined\Introduction
-%     \phantomsection
-%     \section*{\Introduction}
-%     \addcontentsline{toc}{section}{\Introduction}
-%     \label{intro}
-%     \import{sectionfiles/}{introduction}
-% \fi
+\ifdefined\Introduction
+    \phantomsection
+    \section*{\Introduction}
+    \addcontentsline{toc}{section}{\Introduction}
+    \label{intro}
+    \import{sectionfiles/}{introduction}
+\fi
 
 \ifdefined\ResearchSection
   \phantomsection
@@ -98,13 +98,13 @@
   \import{sectionfiles/}{practicalsection}
 \fi
 
-% \ifdefined\ProjectContext
-%   \phantomsection
-%   \section*{\ProjectContext}
-%   \addcontentsline{toc}{section}{\ProjectContext}
-%   \label{context}
-%   \import{sectionfiles/}{projectcontextsection}
-% \fi
+\ifdefined\ProjectContext
+  \phantomsection
+  \section*{\ProjectContext}
+  \addcontentsline{toc}{section}{\ProjectContext}
+  \label{context}
+  \import{sectionfiles/}{projectcontextsection}
+\fi
 
 \ifdefined\FurtherComments
   \phantomsection
