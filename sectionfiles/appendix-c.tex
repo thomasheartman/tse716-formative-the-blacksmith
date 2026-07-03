@@ -5,4 +5,71 @@
 % in the main template file main.tex
 %\setlength{\parskip}{0.2\baselineskip} % use this if yuo want to make a bit of space between paragraphs.
 
-Included on the following pages is the section on researching Guy Michelmore's style of writing from my formative assignment (adventure).
+%This is a template for tutor feedback on module. I tended to put it as an appendix, but you can copy paste it to any file.
+
+\DefTblrTemplate{caption-tag}{default}{Feedback\hspace{0.25em}}
+\DefTblrTemplate{caption-sep}{default}{:\enskip}
+\DefTblrTemplate{caption-text}{default}{\InsertTblrText{caption}}
+
+
+\phantomsection
+\subsubsection*{Tony Manfredonia}
+\addcontentsline{toc}{subsection}{Tony Manfredonia}
+
+\begin{tblr}
+       {
+       colspec = {XXXX},
+       width = \linewidth,
+        vlines = {black},
+        hlines = {black},
+        cell{1,2}{odd} = {NiceGray},
+        cell{1,2}{even} = {white},
+        cell{2,4}{odd} = {NiceGray},
+        cell{3}{1} = {r=1,c=4}{NiceGray},
+        cell{4}{1} = {r=1,c=4}{c,white},
+        cell{5}{1} = {r=1,c=4}{NiceGray},
+        cell{6}{1} = {r=1,c=4}{white}
+       }
+
+    Date: & 2026-07-01 & Tutor: & Tony Manfredonia \\
+    Module Code: & TSE716  & Via:     & 121 \\
+  \SetCell[c=4]{c} Feedback/notes from tutor:  \\
+\end{tblr}
+
+
+\begin{longtblr}
+        {
+        %hspan =  minimal,
+        baseline = f,
+        width = \linewidth,
+        colspec = {X [1,l]},
+        }
+        Great to chat with you, Thomas! Love the direction you took for this scene. The hitpoints are wonderful -- really nice synchronization with the visuals! \\
+
+        Your take on this song works well. For vocal production, I think your distance to the mic worked well for this. About 15-20 centimeters from the mic works nicely, just make sure you're setting your mic gain appropriately. Make sure it's not too loud (not headroom) or too quiet. We discussed all sorts of vocal processing techniques, from EQ and compression to reverb/delay techniques, as well as general vocal editing suggestions (dynamic control and taming s's and t's). \\
+
+        Be sure to keep melodyne / more autotune in mind. While you want this one to feel less "pop" and more natural, a bit of pitch control can really help. \\
+
+        Lastly, this reminds me so much of early Muse music! Reference their Origins of Symmetry or Absolution albums for some guitar/vocal balance. They have new, remixed/remastered versions available now, too, for a bit of that modern polish.
+
+\end{longtblr}
+
+\begin{tblr}
+        {
+        colspec = {X},
+        width = \linewidth,
+         vlines = {black},
+         hlines = {black},
+         cell{1}{odd} = {NiceGray},
+        }
+
+
+    I addressed this by: \\
+ \end{tblr}
+
+ \begin{enumerate}
+        \item Reworking my vocal chain as per his recommendation (although the de-noising was somewhat unsuccessful; and the de-essing should probably have been more dynamic to both prevent a lisp and properly tame the sibilants).
+        \item Increasing the melodyne strength (though I should still look into understanding how to use it a little better to avoid artifacts)
+        \item Improving my recording technique for the remaining vocal takes [00:52 onwards]
+        \item I did not end up referencing the Muse tracks due to time constraints.
+ \end{enumerate}
