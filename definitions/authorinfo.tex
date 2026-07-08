@@ -1,22 +1,26 @@
 % !TEX root = ../main.tex
 % (this is to make TexShop know where your parent file is)
 
-% Use this file to set your data, it will automatically update the information in your pdf
 \ProvidesPackage{authorinfo}
+
+% Author info
+\def\MyFullName{Thomas Heartman} % This should be obvious - it will appear under Title/Subtitle
+\def\HeaderName{T. Heartman} % This will be used in the header of the pages
+\def\StudNum{39870} % Your student number%
+\def\CourseTitle{MFA Video Game and Media Composition} % Your Course
+
+% Assignment info
 % Define a few values for things so we don't have to do it multiple times
 \def\PaperTitle{The Blacksmith} % The Title of this Assignment
 \def\MySubtitle{} % Use this if you want a subtitle just leave blank {} if not needed
-\def\MyFullName{Thomas Heartman} % This should be obvious - it will appear under Title/Subtitle
-\def\StudNum{39870} % Your student number%
-\def\CourseTitle{MFA Video Game and Media Composition} % Your Course
 \def\ModuleName{Foundations of Game Audio} % Change this to the current module name
 \def\SectionType{Formative} % The Formative or summative e.g. Formative 1
 \def\AssignCode{716} % The module code - it will add TSE to the beginning e.g. TSE67
-\def\HeaderName{T. Heartman} % This will be used in the header of the pages
 \def\Wordcount{\input{wordcount.tex}} % You're on your own with this. LaTeX doesn't know how to do it yet. Fill it manually.
 \def\customdate{\today} % Today's date will appear in the title page (it will change daily), or comment this line with % and uncomment the one below to use a custom date
 % \def\customdate{30 July, 2023} %you can set this to whatever date you want on the title page - if you want today's date to appear (it will change daily) then put \today
 
+% Sections
 % You can turn off sections by changing the following to % in front, otherwise you will see section headings for
 % all of the standard sections defined in the TSE template, you can also change the text in brackets
 % and it will change the section name to that Eg \def\ResearchSection{Foo} will call the Research section Foo, and these will be automatically used.
